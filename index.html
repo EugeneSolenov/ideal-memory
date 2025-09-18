@@ -1,143 +1,89 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Главная - Название вашего сайта</title>
-  <meta name="description" content="Краткое описание главной страницы вашего сайта">
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <style>
-    /* Общий стиль */
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      line-height: 1.6;
-      background: #f9f9f9;
-      color: #333;
-    }
-
-    /* Шапка */
-    header {
-      background: url("assets/Airbrush-Image-Enhancer-1757591459738.jpg") no-repeat center center / cover;
-      color: white;
-      padding: 65px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      font-size: 20px;
-    }
-
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: white;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #ffeb3b;
-    }
-
-    /* Основное содержимое */
-    main {
-      padding: 40px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h1, h2 {
-      color: #222;
-    }
-
-    section {
-      background: white;
-      padding: 25px;
-      margin: 20px 0;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-
-    section a {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 18px;
-      background: #4e73df;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    section a:hover {
-      background: #2e59d9;
-    }
-
-    /* Подвал */
-    footer {
-      background: #222;
-      color: #aaa;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-
-    footer p {
-      margin: 5px 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Solenoff</title>
+    <meta name="description" content="Краткое описание главной страницы вашего сайта">
+    <script src="main.js" defer></script>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Шапка сайта -->
-  <header>
-    <a href="/">Название сайта</a>
-    <nav>
-      <ul>
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="about.html">О нас</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Основной контент -->
-  <main>
-    <h1>Добро пожаловать на наш сайт!</h1>
-
-    <section id="services">
-      <h2>Наши услуги</h2>
-      <p>Описание предоставляемых услуг...</p>
-      <a href="#contacts">Связаться с нами</a>
-    </section>
-
-    <section id="portfolio">
-      <h2>Портфолио</h2>
-      <p>Примеры наших работ...</p>
-    </section>
-
-    <section id="contacts">
-      <h2>Контактная информация</h2>
-      <p>Наши контакты...</p>
-      <a href="contacts.html">Подробнее</a>
-    </section>
-  </main>
-
-  <!-- Подвал -->
-  <footer>
-    <p>&copy; 2023 Название вашего сайта. Все права защищены.</p>
-    <p>Телефон: +7 (123) 456-78-90</p>
-  </footer>
+    <!-- Шапка сайта -->
+    <header>
+        <a href="/">Solenoff</a>
+        <!-- Главное меню навигации -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Уникальное основное содержимое страницы -->
+    <main>
+        <h1>Добро пожаловать на наш сайт!</h1>
+        <!-- Секция 1 с якорем -->
+        <section id="services">
+            <h2>Наши услуги</h2>
+            <p>Описание предоставляемых услуг...</p>
+            <a href="#contacts">Связаться с нами</a> <!-- Якорная ссылка внутри страницы -->
+        </section>
+        <!-- Секция 2 с якорем -->
+        <section id="portfolio">
+            <h2>Портфолио</h2>
+            <p>Примеры наших работ...</p>
+        </section>
+        <!-- Секция 3 с якорем -->
+        <section id="contacts">
+            <h2>Контактная информация</h2>
+            <p>Наши контакты...</p>
+            <a href="contacts.html">Подробнее</a> <!-- Ссылка на отдельную страницу -->
+        </section>
+    </main>
+    >
+    <!-- Подвал сайта -->
+    <footer>
+        <p>&copy; 2025 Solenoff. Все права защищены.</p>
+        <p>Телефон: +7 (123) 456-78-90</p>
+    </footer>
+    <!-- Кнопка открытия модалки -->
+    <button id="openDialog" type="button">Написать нам</button>
+    <!-- Модалка с формой -->
+    <dialog id="contactDialog" aria-labelledby="dialogTitle">
+        <h2 id="dialogTitle">Обратная связь</h2>
+        <form id="contactForm" method="dialog" novalidate>
+            <label for="name">Имя</label>
+            <input id="name" name="name" type="text" required minlength="2"
+                   autocomplete="given-name">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" required
+                   autocomplete="email">
+            
+            <label for="phone">Телефон</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel"
+                   autocomplete="tel"
+                   aria-describedby="phoneHelp" placeholder="+7 (___) ___-__-__"
+                   required pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$">
+            <small id="phoneHelp">Формат: +7 (900) 000-00-00</small>
+            
+            <label for="date">Дата</label>
+            <input id="date" name="date" type="date">
+            <label for="topic">Тема</label>
+            <select id="topic" name="topic" required>
+                <option value="">Выберите тему</option>
+                <option>Вопрос</option>
+                <option>Заказ</option>
+            </select>
+            <label for="message">Сообщение</label>
+<textarea id="message" name="message" rows="4" required></textarea>
+            <div class="form-actions">
+                <button type="button" id="closeDialog">Закрыть</button>
+                <button type="submit">Отправить</button>
+            </div>
+        </form>
+    </dialog>
 </body>
 </html>
