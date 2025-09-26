@@ -1,44 +1,66 @@
- <!DOCTYPE html> 
-<html lang="ru"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Главная - Название вашего сайта</title> 
-    <meta name="description" content="Краткое описание главной страницы вашего сайта"> 
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>О нас - Solenoff</title>
+    <meta name="description" content="Узнайте больше о проекте">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-</head> 
-<body> 
-    <header> 
-        <header> 
-        <a href="/">Логотип или название сайта</a> 
-        <!-- Главное меню навигации --> 
-        <nav> 
-            <ul> 
-                <li><a href="index.html">Главная</a></li> 
-                <li><a href="about.html">О нас</a></li> 
-                <li><a href="contacts.html">Контакты</a></li> 
-            </ul> 
-        </nav> 
-    </header> 
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <a href="/" style="font-size: 1.5rem; font-weight: bold;">Solenoff</a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><button class="theme-toggle" type="button" aria-pressed="false">Сменить тему</button></li>
+            </ul>
+        </nav>
+    </header>
+    
     <main>
-        <!-- Простые "хлебные крошки" --> 
-        <nav aria-label="Хлебные крошки"> 
-            <a href="index.html">Главная</a> → 
-            <span>О нас</span> 
-        </nav> 
-        <h1>О нашей компании</h1> 
-        <section> 
-            <h2>Наша история</h2> 
-            <p>Текст о том, как все начиналось...</p> 
-        </section> 
-        <section> 
-            <h2>Наша команда</h2> 
-            <p>Текст о команде...</p> 
-        </section> 
-    </main> 
-    <footer> 
-          <p>&copy; 2023 Название вашего сайта. Все права защищены.</p> 
-        <p>Телефон: +7 (123) 456-78-90</p>
-    </footer> 
-</body> 
-</html> 
+        <nav aria-label="Хлебные крошки">
+            <a href="index.html">Главная</a> →
+            <span>О нас</span>
+        </nav>
+        
+        <h1>О нашей компании</h1>
+        
+        <section>
+            <h2>Наша история</h2>
+            <p>Начинающий разработчик, начитавшийся Чарльза Буковски и наслушившийся Михаила Круга. Стремлюсь к реализации чего попапло и что брело.</p>
+            <p>Неудачные попытки закаляют мозг и делают руки мазолистей.</p>
+        </section>
+        
+        <section>
+            <h2>Наша команда</h2>
+            <p>Команда из одного человека и парочки хороших советчиков.</p>
+            <p>Мне дают советы, я пытаюсь реализовывать. Накладка. По новой. По кругу.</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 Solenoff. Все права защищены.</p>
+        <p>Телефон: +7 (123) 456-78-90 | Email: solenoff@mail.com</p>
+    </footer>
+    
+    <script>
+        // Скрипт для переключения темы
+        const KEY = 'theme', btn = document.querySelector('.theme-toggle');
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (localStorage.getItem(KEY) === 'dark' || (!localStorage.getItem(KEY) && prefersDark)) {
+            document.body.classList.add('theme-dark');
+            btn?.setAttribute('aria-pressed', 'true');
+        }
+        
+        btn?.addEventListener('click', () => {
+            const isDark = document.body.classList.toggle('theme-dark');
+            btn.setAttribute('aria-pressed', String(isDark));
+            localStorage.setItem(KEY, isDark ? 'dark' : 'light');
+        });
+    </script>
+</body>
+</html>

@@ -10,80 +10,112 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Шапка сайта -->
     <header>
-        <a href="/">Solenoff</a>
-        <!-- Главное меню навигации -->
+        <a href="/" style="font-size: 1.5rem; font-weight: bold;">Solenoff</a>
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="about.html">О нас</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
+                <li><button class="theme-toggle" type="button" aria-pressed="false">Сменить тему</button></li>
             </ul>
         </nav>
     </header>
-    <!-- Уникальное основное содержимое страницы -->
+    
     <main>
         <h1>Добро пожаловать на наш сайт!</h1>
-        <!-- Секция 1 с якорем -->
+        
         <section id="services">
             <h2>Наши услуги</h2>
-            <p>Описание предоставляемых услуг...</p>
-            <a href="#contacts">Связаться с нами</a> <!-- Якорная ссылка внутри страницы -->
+            <p>Мы предлагаем широкий спектр услуг для вашего бизнеса. Наша команда профессионалов готова помочь вам достичь ваших целей с помощью современных технологий и проверенных методик.</p>
+            
+            <div class="media">
+                <video controls width="100%" poster="assets/video/poster.jpg" preload="metadata">
+                    <source src="assets/Video.mp4" type="video/mp4">
+                    <source src="assets/video/company-presentation.webm" type="video/webm">
+                    Ваш браузер не поддерживает воспроизведение видео.
+                </video>
+            </div>
+            
+            <a href="#contacts">Связаться с нами</a>
         </section>
-        <!-- Секция 2 с якорем -->
+        
         <section id="portfolio">
             <h2>Портфолио</h2>
-            <p>Примеры наших работ...</p>
+            <p>Ознакомьтесь с нашими последними проектами. Каждая работа - это результат тщательного планирования и внимания к деталям.</p>
+            <img src="assets/misha33.jpg"
+                 alt="Проект: макет мобильного приложения"
+                 width="700" height="475"
+                 loading="lazy" decoding="async">
         </section>
-        <!-- Секция 3 с якорем -->
+        
         <section id="contacts">
             <h2>Контактная информация</h2>
-            <p>Наши контакты...</p>
-            <a href="contacts.html">Подробнее</a> <!-- Ссылка на отдельную страницу -->
+            <p>Свяжитесь с нами для обсуждения вашего проекта. Мы готовы ответить на все ваши вопросы и предложить оптимальное решение.</p>
+            <a href="contacts.html">Подробнее о контактах</a>
         </section>
     </main>
-    >
-    <!-- Подвал сайта -->
+    
     <footer>
-        <p>&copy; 2025 Solenoff. Все права защищены.</p>
-        <p>Телефон: +7 (123) 456-78-90</p>
+        <p>&copy; 2023 Solenoff. Все права защищены.</p>
+        <p>Телефон: +7 (123) 456-78-90 | Email: solenoff@mail.com</p>
     </footer>
-    <!-- Кнопка открытия модалки -->
+    
     <button id="openDialog" type="button">Написать нам</button>
-    <!-- Модалка с формой -->
+    
     <dialog id="contactDialog" aria-labelledby="dialogTitle">
         <h2 id="dialogTitle">Обратная связь</h2>
         <form id="contactForm" method="dialog" novalidate>
-            <label for="name">Имя</label>
-            <input id="name" name="name" type="text" required minlength="2"
-                   autocomplete="given-name">
-            <label for="email">E-mail</label>
-            <input id="email" name="email" type="email" required
-                   autocomplete="email">
+            <label for="name">Имя *</label>
+            <input id="name" name="name" type="text" required minlength="2" autocomplete="given-name" placeholder="Введите ваше имя">
             
-            <label for="phone">Телефон</label>
-            <input id="phone" name="phone" type="tel" inputmode="tel"
-                   autocomplete="tel"
+            <label for="email">E-mail *</label>
+            <input id="email" name="email" type="email" required autocomplete="email" placeholder="example@mail.ru">
+
+            <label for="phone">Телефон *</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"
                    aria-describedby="phoneHelp" placeholder="+7 (___) ___-__-__"
                    required pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$">
             <small id="phoneHelp">Формат: +7 (900) 000-00-00</small>
-            
+
             <label for="date">Дата</label>
             <input id="date" name="date" type="date">
-            <label for="topic">Тема</label>
+            
+            <label for="topic">Тема *</label>
             <select id="topic" name="topic" required>
                 <option value="">Выберите тему</option>
                 <option>Вопрос</option>
                 <option>Заказ</option>
+                <option>Сотрудничество</option>
             </select>
-            <label for="message">Сообщение</label>
-<textarea id="message" name="message" rows="4" required></textarea>
+            
+            <label for="message">Сообщение *</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Опишите вашу задачу..."></textarea>
+            
             <div class="form-actions">
                 <button type="button" id="closeDialog">Закрыть</button>
                 <button type="submit">Отправить</button>
             </div>
         </form>
     </dialog>
+    
+    <script>
+        // Скрипт для переключения темы
+        const KEY = 'theme', btn = document.querySelector('.theme-toggle');
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        // При загрузке страницы проверяем сохраненную тему или системную
+        if (localStorage.getItem(KEY) === 'dark' || (!localStorage.getItem(KEY) && prefersDark)) {
+            document.body.classList.add('theme-dark');
+            btn?.setAttribute('aria-pressed', 'true');
+        }
+        
+        // Обработчик клика по кнопке
+        btn?.addEventListener('click', () => {
+            const isDark = document.body.classList.toggle('theme-dark');
+            btn.setAttribute('aria-pressed', String(isDark));
+            localStorage.setItem(KEY, isDark ? 'dark' : 'light');
+        });
+    </script>
 </body>
 </html>

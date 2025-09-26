@@ -1,3 +1,225 @@
+/* Кнопка переключения темы в шапке */
+.theme-toggle {
+    padding: 0.5rem 1rem;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+}
+
+/* Остальные стили остаются без изменений */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Центрирование основного контента */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Центрирование header и footer */
+header, footer {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-muted);
+    margin-bottom: 2rem;
+}
+
+footer {
+    border-top: 1px solid var(--color-muted);
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* Навигация в header */
+header nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+    align-items: center;
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--color-fg);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+header nav a:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* Секции с улучшенными отступами */
+section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    border-radius: var(--radius);
+    background: var(--color-bg);
+    box-shadow: var(--shadow);
+}
+
+section h2 {
+    margin-top: 0;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 0.5rem;
+}
+
+/* Улучшенные стили для форм */
+label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+    font-weight: 600;
+    color: var(--color-fg);
+}
+
+input, select, textarea, button {
+    width: 100%;
+    max-width: 480px;
+    padding: .75rem 1rem;
+    border: 2px solid #c8c8c8;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+/* Кнопка по умолчанию */
+button, [type="submit"] {
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    max-width: 200px;
+}
+
+button:hover {
+    filter: brightness(0.95);
+    transform: translateY(-1px);
+}
+
+:disabled, [aria-disabled="true"] {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+/* Подсветка ошибочных полей */
+[aria-invalid="true"] {
+    border-color: var(--color-danger);
+}
+
+dialog {
+    padding: 2rem;
+    border: none;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    margin: auto;
+}
+
+dialog::backdrop {
+    background: rgba(0,0,0,.5);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: flex-end;
+}
+
+:root {
+    /* Палитра */
+    --color-bg: #fff;
+    --color-fg: #0b0b0b;
+    --color-muted: #666;
+    --color-primary: #0a84ff;
+    --color-danger: #b00020;
+    /* Типографика и размеры */
+    --font-body: system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 16px;
+    --space-4: 24px;
+    --space-5: 40px;
+    /* Скругления и тени */
+    --radius: 12px;
+    --shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+/* Тёмная тема */
+body.theme-dark {
+    --color-bg: #0b0b0b;
+    --color-fg: #f5f5f5;
+    --color-muted: #aaa;
+    --color-primary: #6aa2ff;
+}
+
+:where(a,button,input,select,textarea):focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+:disabled, [aria-disabled="true"] {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:target {
+    outline: 2px dashed var(--color-primary);
+    outline-offset: 4px;
+}
 
 * {
     box-sizing: border-box;
@@ -9,61 +231,101 @@ html, body {
 }
 
 body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    line-height: 1.5;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-body);
+    line-height: 1.6;
 }
-/* Формы: размеры, отступы, визуальный порядок */
-label {
+
+img, video {
+    max-width: 100%;
+    height: auto;
     display: block;
-    margin: 0.5rem 0 0.25rem;
 }
 
-input, select, textarea, button {
+button, input, select, textarea {
+    font: inherit;
+    color: inherit;
+}
+
+:root {
+    color-scheme: light;
+}
+
+body.theme-dark {
+    color-scheme: dark;
+}
+
+/* Контейнер для медиа */
+.media {
+    aspect-ratio: 16/9;
+    width: min(100%, 800px);
+    margin: 2rem auto;
+}
+
+.media video {
     width: 100%;
-    max-width: 480px;
-    padding: .5rem .75rem;
-    border: 1px solid #c8c8c8;
-    border-radius: 8px;
-    background: #fff;
-}
-/* Кнопка по умолчанию */
-button, [type="submit"] {
-    background: #0a84ff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-/* Состояния: клавиатура/мышь/ошибки */
-:where(input, select, textarea, button):focus-visible {
-    outline: 2px solid #0a84ff;
-    outline-offset: 2px;
+    height: 100%;
+    border: 0;
+    border-radius: var(--radius);
+    background: #000;
+    box-shadow: var(--shadow);
 }
 
-button:hover {
-    filter: brightness(0.95);
+/* Хлебные крошки */
+nav[aria-label="Хлебные крошки"] {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: var(--color-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
-:disabled, [aria-disabled="true"] {
-    opacity: .6;
-    cursor: not-allowed;
-}
-/* Подсветка ошибочных полей (установите aria-invalid="true") */
-[aria-invalid="true"] {
-    border-color: #b00020;
+nav[aria-label="Хлебные крошки"] a {
+    color: var(--color-primary);
+    text-decoration: none;
 }
 
-dialog {
-    padding: 1.25rem;
-    border: none;
-    border-radius: 12px;
+nav[aria-label="Хлебные крошки"] span {
+    color: var(--color-muted);
 }
 
-    dialog::backdrop {
-        background: rgba(0,0,0,.5);
-    }
+/* Улучшенная типографика */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--color-primary);
+}
 
-.form-actions {
-    display: flex;
-    gap: .5rem;
-    margin-top: 1rem;
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+/* Ссылки в контенте */
+main a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+main a:hover {
+    text-decoration: underline;
+}
+
+/* Кнопка открытия диалога */
+#openDialog {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
 }
